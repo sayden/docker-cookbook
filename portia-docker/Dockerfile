@@ -13,10 +13,15 @@ RUN pip install jsonschema
 RUN pip install twisted
 RUN pip install scrapy
 RUN pip install -e git://github.com/scrapy/scrapely.git\#egg=scrapely
-RUN pip install -e /opt/portia/slybot
 
 # Clone portia project from github
 RUN git clone https://github.com/sayden/portia.git /opt/portia
 
+# "Compile"? slybot
+RUN pip install -e /opt/portia/slybot
+
 # Expose the port used by portia
 EXPOSE 9001
+
+# Well done!
+RUN echo "Installation finished. run 'docker run sayden/portia /opt/portia/start-portia.sh' to start the web server"
