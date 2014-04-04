@@ -9,6 +9,9 @@ Portia is an awesome open source new web-scraping tool based on scrapy for easy 
 
 This docker contains all the packages neccesary to run portia on it's default settings
 
+### Docker Index Link
+https://index.docker.io/u/sayden/portia/
+
 
 	# Select Fedora as base image
 	FROM fedora
