@@ -8,6 +8,34 @@ Docker is an open-source project to easily create lightweight, portable, self-su
 
 * Website: https://www.docker.io/
 
+## ZOOKEEPER
+Zookeeper is a server to make easy the communication between distributed applications. It's mandatory in Apache Storm.
+
+## STORM-SUPERVISOR
+This Docker is intended to user as a Storm-supervisor node to use in Storm clusters
+
+## HADOOP-DATANODE
+This Docker is intended to be a DataNode-Tasktracker node for Hadoop clusters. It's difficulty basically resides on the
+port configuration and exposition
+
+## UBUNTU-BASE
+Ubuntu base takes the 12.04 version from the official repository and add it some missing features. Basically:
+- SSH server
+- TAR
+- wget
+- Java 1.6
+- sudo
+- nano
+
+## CENTOS-BASE
+Centos base, as Ubuntu base, is the fresh installation from the official Centos images in the Docker index with:
+- SSH server
+- tar
+- wget
+- Java 1.6
+- sudo
+- nano
+
 ## PORTIA
 Portia is an awesome open source new web-scraping tool based on scrapy for easy and visual data mining of structured data in web pages.
 
