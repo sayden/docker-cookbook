@@ -20,7 +20,7 @@ RUN pip install scrapy
 RUN pip install -e git://github.com/scrapy/scrapely.git\#egg=scrapely
 
 # Clone portia project from github
-RUN git clone https://github.com/sayden/portia.git /opt/portia
+RUN git clone https://github.com/scrapinghub/portia.git /opt/portia
 
 # "Compile"? slybot
 RUN pip install -e /opt/portia/slybot

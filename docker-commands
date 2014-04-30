@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo ''
+
+if [ $# -ne 0 ]; then
+	case $1 in
+		-ips) docker ps | awk '/\d/ {system("docker inspect "$1" | grep IPA")}'
+			;;
+		-bash) docker run -i -t $2 /bin/bash
+	esac
+else
+	echo 'ERROR: Not enough arguments'
+	echo 'INFO:Usage:'
+	echo '    docker-commands COMMAND [IMAGE]'
+	echo ''
+	echo 'INFO: Available commands:'
+	echo "    -ips: Show the IP's of the current running containers"
+	echo "    -bash: Run bash on the specified container"
+fi
