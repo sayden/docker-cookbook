@@ -29,4 +29,4 @@ RUN pip install -e /opt/portia/slybot
 EXPOSE 9001
 
 # Start the web server
-ENTRYPOINT ["/opt/portia/start-portia.sh"]
+CMD ["/opt/portia/start-portia.sh"]
