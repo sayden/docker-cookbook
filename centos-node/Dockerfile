@@ -1,23 +1,21 @@
-FROM    centos:7
+FROM    node:4
 
-# Install required packages
-RUN yum install -y epel-release
-RUN yum install -y nodejs npm git
+# Arguments
+ENV REPO="https://github.com/sayden/simplest-express-server.git"
+ENV DEST=/srv/node-server
+ENV APP=${DEST}/server.js
 
-# Install global npm dependencies
-RUN npm install -g n pm2
-
-# Install Node LTS version
-RUN n 4.2.3
+# Ensure git is installed
+RUN apt-get install -y git
 
 # Clone the github repo
-RUN git clone https://github.com/sayden/simplest-express-server.git /srv/node-server
+RUN git clone ${REPO} ${DEST}
 
-# Install app dependencies
-RUN cd /srv/node-server && npm install
+# Go to cloned folder
+RUN cd ${DEST} && npm install
 
 # Expose app port
 EXPOSE 3000
 
 # Launch app
-CMD ["node", "/srv/node-server/server.js"]
+CMD ["sh", "-c", "cd ${DEST} && npm start"]
