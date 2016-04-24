@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo -e "\e[32m ----------> Building image 'mesos-compile-base'\e[0m"
+docker build -t mesos-compile-base -f base_image .
+
+echo -e "\e[32m ----------> Running image with name 'mesos_compilation_container' to compile Mesos\e[0m"
+docker run --name=mesos_compilation_container mesos-compile-base
+
+echo -e "\e[32m ----------> Copying compilation result to a folder called 'result'\e[0m"
+docker cp mesos_compilation_container:/opt/mesos result
+
+echo -e "\e[32m ----------> Deleting created container\e[0m"
+docker rm mesos_compilation_container
+
+echo -e "\e[32m ----------> Moving compiled Mesos to its working folder '/opt/mesos'\e[0m"
+mv result /opt/mesos
+
+echo -e "\e[32m ----------> Changing permissions to /opt/mesos\e[0m"
+chown -R `whoami` /opt/mesos
+chgrp -R `whoami` /opt/mesos
+
+echo -e "\e[32m ----------> FINISHED!\e[0m"

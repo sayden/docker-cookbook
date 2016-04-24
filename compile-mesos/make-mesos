@@ -1,0 +1,11 @@
+#!/bin/bash
+
+git clone https://git-wip-us.apache.org/repos/asf/mesos.git /opt/mesos
+mkdir -p /opt/mesos/build
+cd /opt/mesos
+./bootstrap
+cd /opt/mesos/build
+../configure
+cd /opt/mesos/build
+# replace make with 'make -j 4 V=0' if you want to use 4 cores
+make

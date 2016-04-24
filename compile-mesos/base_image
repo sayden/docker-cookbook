@@ -1,0 +1,16 @@
+# Select Ubuntu 12.04 as base image
+FROM centos:7
+
+MAINTAINER Mario Castro mariocaster@gmail.com
+
+RUN yum install -y sudo wget tar git
+RUN yum install -y java-1.8.0-openjdk-devel python-devel zlib-devel
+RUN yum groupinstall -y "Development Tools"
+RUN yum install -y libcurl-devel openssl-devel cyrus-sasl-md5
+RUN yum install -y apr-devel subversion-devel apr-util-devel
+RUN yum install -y autoconf automake libtool patch maven which gcc-c++ redhat-rpm-config
+RUN yum update -y systemd
+
+COPY make-mesos /opt/make-mesos
+
+CMD ["/bin/bash", "/opt/make-mesos"]
